@@ -6,6 +6,7 @@ interface ButtonProps {
   iconName?: React.ComponentType<{ iconsSize?: number }>;
   onClick?: () => void;
   className?: string;
+  customText?: string;
   iconsSize?: number;
 }
 
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   iconsSize,
   onClick,
   className,
+  customText
 }) => {
   return (
     <button
@@ -29,7 +31,9 @@ const Button: React.FC<ButtonProps> = ({
            <Icon iconsSize={iconsSize} />
         </span>
       )}
-      <p className="text-white text-xl relative z-[2]">{text}</p>
+      <p className={cn("text-white text-xl relative z-[2]",
+        customText
+      )}>{text}</p>
     </button>
   );
 };

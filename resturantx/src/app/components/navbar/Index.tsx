@@ -7,12 +7,10 @@ import CartIcon from "@/app/icons/CartIcon";
 const Navbar = () => {
   return (
     <nav className="shadow-md w-full">
-      <div className="flex justify-between h-16 items-center">
+      <div className="flex justify-between mb-6 items-center">
         {/* Logo Section */}
-        <div className="flex-shrink-0">
-          <a href="/" className="text-2xl font-bold text-blue-600">
-            Logo
-          </a>
+        <div className="">
+          <img src="/logo.svg" width={55} />
         </div>
 
         {/* Menu Section */}
@@ -21,15 +19,10 @@ const Navbar = () => {
             text="Call Waiter"
             iconName={CallIcon}
             // onClick={handleClick}
-            className="mr-1 font-light bg-primary rounded-xl"
+            customText={"text-black font-semibold"}
+            className="bg-primary rounded-xl"
           />
-          <Button
-            text=""
-            iconName={CartIcon}
-            // onClick={handleClick}
-            className="mx-2 bg-white px-3 rounded-xl"
-            
-          />
+          
         </div>
       </div>
     </nav>
