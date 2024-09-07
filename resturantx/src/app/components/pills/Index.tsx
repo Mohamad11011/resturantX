@@ -35,7 +35,7 @@ const Phills = ({
     <div className="text-sm font-medium text-center text-white/85">
       <ul className="flex flex-wrap space-x-2">
         {tabs.map((tab) => (
-          <li className="me-2" key={tab.name}>
+          <li className="me-2 max-md:m-1" key={tab.name}>
             <a
               href="#"
               className={`inline-block py-1.5 px-6 text-lg rounded-full bg-night border border-lightBorder ${

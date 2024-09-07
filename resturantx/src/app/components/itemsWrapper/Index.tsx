@@ -55,7 +55,7 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
         setActiveCategory={setActiveCategory}
         activeCategory={activeCategory}
       /> */}
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-col space-y-4 md:flex-row md:space-y-0">
           <div className="flex items-center space-x-6">
             <div className="">
               <img src="/logo.svg" width={50} />
@@ -63,7 +63,12 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
 
             <h1 className="text-2xl text-white font-semibold">Choose Dishes</h1>
           </div>
-          <DropDown />
+          <div className=" flex space-x-2 items-center max-md:ml-auto">
+            <DropDown />
+            {/* <div className="cursor-pointer text-white text-xl bg-night border font border-lightBorder hover:bg-night/60 focus:ring-0 rounded-lg px-5 py-2.5">
+              Currency
+            </div> */}
+          </div>
         </div>
         <div className="sticky top-0 z-10 flex flex-col space-y-4 bg-lightNight pb-4">
           <Tabs />
@@ -75,10 +80,8 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
           />
         </div>
 
+        <CartList />
 
-   <CartList />
-
-       
         {/* <Topbar
           header="Our Menu"
           menuItems={Items}
@@ -94,12 +97,12 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
           </div> */}
 
           <div className="flex space-x-1">
-            <div className="w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-3 gap-6 relative py-4 pr-6 ">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-5 gap-6 relative py-4 pr-6 ">
               {items.map((item, index) => (
                 <Card
                   key={index}
                   id={index}
-                  imageSrc="/food/salad.jpeg"
+                  imageSrc="/drink.webp"
                   title={item.title}
                   description={item.description}
                   price={item.price}
@@ -107,7 +110,7 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
               ))}
             </div>
             <div className="relative h-auto w-6 py-20 border-r">
-              <p className="sticky -right-8 top-48 font-extralight whitespace-nowrap pr-5 -rotate-90">
+              <p className="sticky -right-8 top-80 font-extralight whitespace-nowrap pr-5 -rotate-90 select-none">
                 scroll down
               </p>
             </div>

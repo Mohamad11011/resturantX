@@ -29,7 +29,7 @@ const Tabs: React.FC = () => {
   }, [tabs]);
   return (
     <div className="text-sm font-medium text-center text-white/85 border-b border-lightBorder  ">
-      <ul className="flex flex-wrap -mb-px">
+      <ul className="flex -mb-px">
         {tabs.map((tab) => (
           <li className="me-2" key={tab.name}>
             <a

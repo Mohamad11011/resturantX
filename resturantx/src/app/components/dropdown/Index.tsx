@@ -48,7 +48,7 @@ const DropDown: React.FC = () => {
       {isOpen && (
         <div
           id="dropdown"
-          className="absolute top-[105%] z-10 bg-lightNight border border-lightBorder divide-y divide-gray-100 rounded-lg w-full "
+          className="absolute z-[11] top-[105%] bg-lightNight border border-lightBorder divide-y divide-gray-100 rounded-lg w-full "
           onBlur={closeDropdown}
         >
           <ul

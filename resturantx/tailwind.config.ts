@@ -11,6 +11,7 @@ const config =module.exports = {
         lightNight: '#252836',
         secondary: '#2a2f35',
         primary: '#f5a302',
+        //#dd847e f5a302
         lightBorder:"#393C49"
       },
       backgroundImage: {

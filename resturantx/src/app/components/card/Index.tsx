@@ -5,50 +5,73 @@ import { ItemCardProps } from "@/app/types/types";
 import Image from "next/image";
 import React from "react";
 
-const Card = ({
-  id,
-  imageSrc,
-  title,
-  description,
-  price,
-}: ItemCardProps) => {
+const Card = ({ id, imageSrc, title, description, price }: ItemCardProps) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ title, price,id });
+    addToCart({ title, price, id });
   };
 
   return (
-    <div className="flex rounded-lg overflow-hidden space-x-3 group ">
-      <div className="min-w-[120px] h-[120px] overflow-hidden">
+    // <div className="flex rounded-lg overflow-hidden space-x-3 group ">
+    //   <div className="min-w-[120px] h-[120px] overflow-hidden">
+    //     <Image
+    //       src={imageSrc}
+    //       alt={title}
+    //       className="w-full h-full object-cover rounded-xl"
+    //       width={100}
+    //       height={100}
+    //     />
+    //   </div>
+
+    //   <div className="pt-1 pr-2 flex flex-col justify-between">
+    //     <div>
+    //       <h2 className="text-[15px] font-semibold text-white line-clamp-1 group-hover:text-primary">
+    //         {title}
+    //       </h2>
+    //       <p className="mt-1 text-white/90 font-light text-[11px] line-clamp-3">
+    //         {description}
+    //       </p>
+    //     </div>
+
+    //     <div className="flex justify-between items-center pb-1">
+    //       <span className="text-lg font-semibold text-white">{price}$</span>
+    //       <div
+    //         className="bg-primary rounded-md cursor-pointer hover:bg-primary/85"
+    //         onClick={handleAddToCart}
+    //       >
+    //         <PlusIcon size={26} className={"fill-white"} />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="flex flex-col items-center rounded-xl group bg-night mt-8 relative">
+      <div className="w-[120px] h-[120px] relative select-none">
         <Image
           src={imageSrc}
           alt={title}
-          className="w-full h-full object-cover bg-night/80 rounded-xl group-hover:opacity-85"
-          width={100}
-          height={100}
+          className="w-36 h-auto max-w-36 object-cover rounded-xl absolute -top-8 left-1/2 -translate-x-1/2"
+          width={180}
+          height={180}
         />
       </div>
 
-      <div className="pt-1 pr-2 flex flex-col justify-between">
-        <div>
-          <h2 className="text-[15px] font-semibold text-white line-clamp-1 group-hover:text-primary">
-            {title}
-          </h2>
-          <p className="mt-1 text-white/90 font-light text-[11px] line-clamp-3">
-            {description}
-          </p>
-        </div>
-
-        <div className="flex justify-between items-center pb-1">
-          <span className="text-lg font-semibold text-white">{price}$</span>
-          <div
-            className="bg-primary rounded-md cursor-pointer hover:bg-primary/85"
-            onClick={handleAddToCart}
-          >
-            <PlusIcon size={26} className={"fill-white"} />
-          </div>
-        </div>
+      <div className="pb-8 flex flex-col space-y-5 justify-between px-8">
+        <h2 className=" text-xl font-semibold text-white line-clamp-1 group-hover:text-primary text-center select-none">
+          {title}
+        </h2>
+        <p className="mt-1 text-white/90 font-light text-sm line-clamp-3 select-none">
+          {/* {description} */}
+          Ice blended with Fresh Grape and Green tea / / Cream cheese is added
+          as a topping
+        </p>
+      </div>
+      <span className="text-2xl font-semibold text-white absolute top-2 left-3 select-none">{price}$</span>
+      <div
+        className="bg-primary rounded-lg cursor-pointer hover:bg-primary/85 absolute top-2 right-3"
+        onClick={handleAddToCart}
+      >
+        <PlusIcon size={40} className={"fill-white"} />
       </div>
     </div>
   );
