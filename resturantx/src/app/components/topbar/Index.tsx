@@ -4,21 +4,8 @@ import React, { useEffect, useState } from "react";
 import Button from "../button/Index";
 import { url } from "inspector";
 import Image from "next/image";
-import { grillObject, italianObject, pizzaObject, saladsObject, shawarmaObject } from "@/constants";
+import { SidebarProps } from "@/app/types/types";
 
-interface MenuItem {
-  label: string;
-  img: string;
-  onClick?: () => void;
-}
-
-interface SidebarProps {
-  header?: string;
-  menuItems?: MenuItem[];
-  className?: string;
-  setActiveCategory?: any;
-  activeCategory?: any;
-}
 
 const Topbar = ({
   header,
@@ -29,11 +16,11 @@ const Topbar = ({
 }: SidebarProps) => {
 
   return (
-    <div className={cn("w-full bg-white/5 p-2 rounded-md", className)}>
+    <div className={cn("w-full bg-white/5 px-4 py-2 rounded-md", className)}>
       {/* Sidebar Header */}
-      {/* <div className="mb-4">
-        <h2 className="text-xl text-gray-200">{header}</h2>
-      </div> */}
+      <div className="mb-4">
+        <h2 className="text-2xl text-gray-200">{header}</h2>
+      </div>
 
       {/* Sidebar Menu Items */}
       <div className="relative h-full">

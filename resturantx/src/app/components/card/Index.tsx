@@ -1,21 +1,21 @@
 // components/Card.tsx
 import { useCart } from "@/app/context/cart/CartContext";
 import PlusIcon from "@/app/icons/PlusIcon";
+import { ItemCardProps } from "@/app/types/types";
 import Image from "next/image";
 import React from "react";
 
-interface ItemCardProps {
-  imageSrc: string;
-  title: string;
-  description: string;
-  price: number;
-}
-
-const Card = ({ imageSrc, title, description, price }: ItemCardProps) => {
+const Card = ({
+  id,
+  imageSrc,
+  title,
+  description,
+  price,
+}: ItemCardProps) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ title, price, quantity: 1 });
+    addToCart({ title, price,id });
   };
 
   return (
@@ -32,10 +32,12 @@ const Card = ({ imageSrc, title, description, price }: ItemCardProps) => {
 
       <div className="pt-1 pr-2 flex flex-col justify-between">
         <div>
-          <h2 className="text-base font-semibold text-white line-clamp-1 group-hover:text-primary">
+          <h2 className="text-[15px] font-semibold text-white line-clamp-1 group-hover:text-primary">
             {title}
           </h2>
-          <p className="mt-1 text-white/90 font-light text-[10px] line-clamp-3">{description}</p>
+          <p className="mt-1 text-white/90 font-light text-[11px] line-clamp-3">
+            {description}
+          </p>
         </div>
 
         <div className="flex justify-between items-center pb-1">

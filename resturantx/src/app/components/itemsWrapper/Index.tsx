@@ -13,6 +13,9 @@ import {
 import Topbar from "../topbar/Index";
 import { CartProvider } from "@/app/context/cart/CartContext";
 import CartList from "../cart/Index";
+import DropDown from "../dropdown/Index";
+import Tabs from "../tabs/Index";
+import Phills from "../pills/Index";
 
 interface ItemsWrapper {
   Items: any;
@@ -45,7 +48,6 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
   const items = getItems(activeCategory);
   return (
     <CartProvider>
-
       <>
         {/* <Sidebar
         header="Main Menu"
@@ -53,25 +55,50 @@ const ItemsWrapper = ({ Items }: ItemsWrapper) => {
         setActiveCategory={setActiveCategory}
         activeCategory={activeCategory}
       /> */}
-      <CartList />
-        <Topbar
-          header="Main Menu"
+        <div className="flex justify-between">
+          <div className="flex items-center space-x-6">
+            <div className="">
+              <img src="/logo.svg" width={50} />
+            </div>
+
+            <h1 className="text-2xl text-white font-semibold">Choose Dishes</h1>
+          </div>
+          <DropDown />
+        </div>
+        <div className="sticky top-0 z-10 flex flex-col space-y-4 bg-lightNight pb-4">
+          <Tabs />
+
+          <Phills
+            menuItems={Items}
+            setActiveCategory={setActiveCategory}
+            activeCategory={activeCategory}
+          />
+        </div>
+
+
+   <CartList />
+
+       
+        {/* <Topbar
+          header="Our Menu"
           menuItems={Items}
           setActiveCategory={setActiveCategory}
           activeCategory={activeCategory}
-        />
-        <div className="flex flex-1 flex-col py-2 px-6 bg-secondary rounded-md">
-          <div className="flex space-x-3 items-center py-3">
+        /> */}
+
+        <div className="flex flex-1 flex-col py-2 px-6 rounded-md">
+          {/* <div className="flex space-x-3 items-center py-3">
             <h1 className="text-3xl text-primary font-semibold">
               {activeCategory}
             </h1>
-          </div>
+          </div> */}
 
           <div className="flex space-x-1">
             <div className="w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-3 gap-6 relative py-4 pr-6 ">
               {items.map((item, index) => (
                 <Card
                   key={index}
+                  id={index}
                   imageSrc="/food/salad.jpeg"
                   title={item.title}
                   description={item.description}

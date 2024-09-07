@@ -7,10 +7,11 @@ const config =module.exports = {
   theme: {
     extend: {
       colors: {
-        night: '#1e2329',
-        lightNight: '#3b4046',
+        night: '#1F1D2B',
+        lightNight: '#252836',
         secondary: '#2a2f35',
         primary: '#f5a302',
+        lightBorder:"#393C49"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
