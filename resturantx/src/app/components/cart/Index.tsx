@@ -34,12 +34,12 @@ const CartList = () => {
     if (cart && cart.length === 0) {
       setTimeout(() => {
         setIsCartVisible(false);
-      }, 1500);
+      }, 1000);
     }
   }, [cart.length]);
   return (
     <>
-      <div className="fixed bottom-4 right-10 z-10">
+      <div className="fixed bottom-4 right-5 md:right-10 z-10">
         <button
           onClick={cart.length > 0 ? toggleCartVisibility : undefined}
           className={cn(
@@ -70,7 +70,7 @@ const CartList = () => {
 
       <div
         className={cn(
-          "w-[95%] md:w-1/2 p-6 bg-night border border-white/20 z-10 text-white rounded-lg",
+          "w-[95%] px-3.5 py-4 md:w-1/2 md:p-6 bg-night border border-white/20 z-10 text-white rounded-lg",
           "fixed left-1/2 transition-all duration-300 -translate-y-1/2 -translate-x-1/2",
           isCartVisible ? "top-1/2 opacity-100" : "-top-full  opacity-0"
         )}
@@ -81,10 +81,10 @@ const CartList = () => {
         ) : (
           <div>
             <div className="w-full flex justify-between pb-2 mb-3 border-b border-lightBorder">
-              <span>Item</span>
+              <span className="md:text-lg">Item</span>
               <div className="flex space-x-2 md:pr-[46px]">
-                <div className="w-[46px] text-lg">Qty</div>
-                <div className="w-[46px] text-lg">Price</div>
+                <div className="w-[40px] md:w-[46px] md:text-lg">Qty</div>
+                <div className="w-[40px] md:w-[46px] md:text-lg">Price</div>
               </div>
             </div>
             <ul>
@@ -93,7 +93,7 @@ const CartList = () => {
                   key={item.title}
                   className="mb-2 flex justify-between items-center"
                 >
-                  <div className="text-lg">
+                  <div className="md:text-lg">
                     {item.title}
                     <span className="ml-1.5 text-xs text-gray-300">
                       ({item.price} $)
@@ -115,11 +115,11 @@ const CartList = () => {
                           <MinusIcon size={14} className={"fill-white"} />
                         </div>
                       </div>
-                      <div className="select-none w-[45px] md:w-[50px] h-[50px] flex items-center justify-center bg-lightNight border border-lightBorder rounded text-sm">
+                      <div className="select-none w-[40px] md:w-[50px] h-[50px] flex items-center justify-center bg-lightNight border border-lightBorder rounded text-sm">
                         x{item.quantity}
                       </div>
                     </div>
-                    <div className="select-none w-[50px] h-[50px] flex items-center justify-center bg-lightNight border border-lightBorder rounded text-sm">
+                    <div className="select-none w-[40px] h-[50px] flex items-center justify-center bg-lightNight border border-lightBorder rounded text-sm">
                       {item.price * item.quantity} $
                     </div>
 

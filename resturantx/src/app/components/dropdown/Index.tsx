@@ -1,9 +1,15 @@
+import { useCurrency } from "@/app/context/cart/CurrencyContext";
 import { cn } from "@/app/utils/cn";
-import React, { useState } from "react";
+import { useState } from "react";
 
-const DropDown: React.FC = () => {
+const DropDown = () => {
+  const { selectedCurrency, setSelectedCurrency } = useCurrency();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>("Dine In"); // Default selected option
+
+  const options = [
+    { name: "Dollar", rate: 1 },
+    { name: "Lira", rate: 90000 },
+  ];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -13,9 +19,9 @@ const DropDown: React.FC = () => {
     setIsOpen(false);
   };
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    setIsOpen(false); // Close dropdown after selecting
+  const handleOptionClick = (option: { name: string; rate: number }) => {
+    setSelectedCurrency(option);
+    setIsOpen(false);
   };
 
   return (
@@ -23,10 +29,10 @@ const DropDown: React.FC = () => {
       <button
         id="dropdownDefaultButton"
         onClick={toggleDropdown}
-        className="text-white text-xl bg-night border font border-lightBorder hover:bg-night/60 focus:ring-0 focus:outline-none focus:ring-transparent rounded-lg px-5 py-2.5 text-center inline-flex items-center"
+        className="text-white text-xl bg-night border font border-lightBorder hover:bg-night/60 focus:ring-0 focus:outline-none focus:ring-transparent rounded-lg px-3 py-2.5 text-center inline-flex items-center"
         type="button"
       >
-        <span className="min-w-20">{selectedOption}</span>
+        <span className="min-w-16">{selectedCurrency.name}</span>
 
         <svg
           className="w-2.5 h-2.5 ms-3"
@@ -55,32 +61,22 @@ const DropDown: React.FC = () => {
             className="py-2 text-sm text-gray-700 "
             aria-labelledby="dropdownDefaultButton"
           >
-            <li>
-              <a
-                href="#"
-                onClick={() => handleOptionClick("Dine In")}
-                className={cn(
-                  "block text-white px-4 py-2 hover:bg-white/5",
-                  selectedOption === "Dine In" ? "text-white" : "text-white/80"
-                )}
-              >
-                Dine In
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => handleOptionClick("Take Out")}
-                className={cn(
-                  "block text-white px-4 py-2 hover:bg-white/5",
-                  selectedOption === "Take Out"
-                    ? "text-white "
-                    : "text-white/80"
-                )}
-              >
-                Take Out
-              </a>
-            </li>
+            {options.map((item, index) => (
+              <li key={index}>
+                <a
+                  href="#"
+                  onClick={() => handleOptionClick(item)}
+                  className={cn(
+                    "block text-white px-4 py-2 hover:bg-white/5",
+                    selectedCurrency.name === item.name
+                      ? "text-white bg-night/80"
+                      : "text-white/80"
+                  )}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )}

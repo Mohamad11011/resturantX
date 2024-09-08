@@ -15,7 +15,7 @@ export interface SidebarProps {
 export interface ItemCardProps {
     imageSrc: string;
     title: string;
-    description: string;
+    description: string | undefined;
     price: number;
-    id:number
+    id:string
   }

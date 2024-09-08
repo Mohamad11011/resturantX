@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface CartItem {
-  id: number;
+  id: string;
   title: string;
   price: number;
   quantity: number;
@@ -26,12 +26,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find(
-        (cartItem) => cartItem.title === item.title
+        (cartItem) => cartItem.id === item.id
       );
 
       if (existingItem) {
         return prevCart.map((cartItem) =>
-          cartItem.title === item.title
+          cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -43,12 +43,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const decreaseFromCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find(
-        (cartItem) => cartItem.title === item.title
+        (cartItem) => cartItem.id === item.id
       );
 
       if (existingItem) {
         return prevCart.map((cartItem) =>
-          cartItem.title === item.title && cartItem.quantity > 0
+          cartItem.id === item.id && cartItem.quantity > 0
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         ) .filter((cartItem) => cartItem.quantity > 0);
@@ -57,8 +57,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }
     });
   };
-  const removeFromCart = (title: any) => {
-    setCart((prevCart) => prevCart.filter((item) => item.title !== title));
+  const removeFromCart = (id: any) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
   const clearCart = () => {
